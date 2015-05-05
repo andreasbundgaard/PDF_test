@@ -63,7 +63,7 @@ namespace PDF_Test
                     }
                 }
                 
-                    string pdfFilename = "txttopdf.pdf";
+                    string pdfFilename = "Faktura.pdf";
                     pdf.Save(pdfFilename);
                     readFile.Close();
                     readFile = null;

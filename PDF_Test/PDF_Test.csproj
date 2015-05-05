@@ -53,13 +53,13 @@
       <HintPath>..\..\..\..\PDFsharp-MigraDocFoundation-Assemblies-1_31\WPF\de\MigraDoc.RtfRendering-WPF.resources.dll</HintPath>
     </Reference>
     <Reference Include="PdfSharp-WPF">
-      <HintPath>..\..\..\..\Desktop\Nyt-arkiv\PdfSharp-WPF.dll</HintPath>
+      <HintPath>\\psf\Home\Documents\PDFsharp-MigraDocFoundation-Assemblies-1_31\WPF\PdfSharp-WPF.dll</HintPath>
     </Reference>
     <Reference Include="PdfSharp-WPF.resources">
-      <HintPath>..\..\..\..\Desktop\Nyt-arkiv\PdfSharp-WPF.resources.dll</HintPath>
+      <HintPath>\\psf\Home\Documents\PDFsharp-MigraDocFoundation-Assemblies-1_31\WPF\PdfSharp-WPF.resources.dll</HintPath>
     </Reference>
     <Reference Include="PdfSharp.Charting-WPF">
-      <HintPath>..\..\..\..\Desktop\Nyt-arkiv\PdfSharp.Charting-WPF.dll</HintPath>
+      <HintPath>\\psf\Home\Documents\PDFsharp-MigraDocFoundation-Assemblies-1_31\WPF\PdfSharp.Charting-WPF.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
