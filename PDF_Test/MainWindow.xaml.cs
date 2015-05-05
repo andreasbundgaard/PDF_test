@@ -20,9 +20,9 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Diagnostics;
-using MigraDoc.DocumentObjectModel;
-using MigraDoc.Rendering;
-using MigraDoc.RtfRendering;
+//using MigraDoc.DocumentObjectModel;
+//using MigraDoc.Rendering;
+//using MigraDoc.RtfRendering;
 
 namespace PDF_Test
 {
