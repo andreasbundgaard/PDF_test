@@ -20,6 +20,9 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Diagnostics;
+using MigraDoc.DocumentObjectModel;
+using MigraDoc.Rendering;
+using MigraDoc.RtfRendering;
 
 namespace PDF_Test
 {
@@ -46,7 +49,9 @@ namespace PDF_Test
                 PdfDocument pdf = new PdfDocument();
                 pdf.Info.Title = "TXT to PDF";
                 PdfPage pdfPage = pdf.AddPage();
+                XImage background = XImage.FromFile("C:\\Fakturapapir.jpg");
                 XGraphics graph = XGraphics.FromPdfPage(pdfPage);
+                graph.DrawImage(background, new XPoint(0, 0));
                 XFont font = new XFont("Courier New", 11, XFontStyle.Regular);
 
                 while (true)
