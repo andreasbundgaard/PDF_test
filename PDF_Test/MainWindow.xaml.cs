@@ -36,16 +36,34 @@ namespace PDF_Test
         public MainWindow()
         {
             InitializeComponent();
+
+        }
+
+        TextReader readFile = new StreamReader("Text.txt");
+
+
+        private string ReadInvoice()
+        {
+            string returnstring = "";
+            returnstring = readFile.ReadToEnd();
+            return returnstring;
+        }
+
+        private List<string> ReadAllLines()
+        {
+            List<string> returnlist = new List<string>();
+            return returnlist;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                string line = null;
-                TextReader readFile = new StreamReader("Text.txt");
-                int yPoint = 0;
+                StreamReader readFile = new StreamReader("Text.txt");
 
+                string line;
+                int yPoint = 0;
+                List<string> lines = new List<string>();
                 PdfDocument pdf = new PdfDocument();
                 pdf.Info.Title = "TXT to PDF";
                 PdfPage pdfPage = pdf.AddPage();
@@ -54,11 +72,19 @@ namespace PDF_Test
                 graph.DrawImage(background, new XPoint(0, 0));
                 XFont font = new XFont("Courier New", 11, XFontStyle.Regular);
 
-                while (true)
+                foreach (string test in File.ReadAllLines("Text.txt"))
                 {
-                    line = readFile.ReadLine();
-                    if (line == null)
+                    //Console.WriteLine(test);
+                }
+
+                while ((line = readFile.ReadLine()) != null)
+                {
+                    //foreach 
+                    //line = readFile.ReadToEnd();
+
+                    if (line.Contains(""))
                     {
+                        //Console.WriteLine("Succes");
                         break;
                     }
                     else
@@ -68,11 +94,10 @@ namespace PDF_Test
                     }
                 }
                 
-                    string pdfFilename = "Faktura.pdf";
-                    pdf.Save(pdfFilename);
-                    readFile.Close();
-                    readFile = null;
-                    Process.Start(pdfFilename);
+                pdf.Save("Faktura.pdf");
+                readFile.Close();
+                readFile = null;
+                Process.Start("Faktura.pdf");
 
                 }
                 catch (Exception ex)
