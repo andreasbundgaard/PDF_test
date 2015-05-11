@@ -60,7 +60,7 @@ namespace PDF_Test
             try
             {
                 StreamReader readFile = new StreamReader("Text.txt");
-
+                int counter = 0;
                 string line;
                 int yPoint = 0;
                 List<string> lines = new List<string>();
@@ -81,11 +81,12 @@ namespace PDF_Test
                 {
                     //foreach 
                     //line = readFile.ReadToEnd();
+                    lines.Add(line);
 
                     if (line.Contains(""))
                     {
                         //Console.WriteLine("Succes");
-                        break;
+                        counter++;
                     }
                     else
                     {
