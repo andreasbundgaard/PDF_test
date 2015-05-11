@@ -39,7 +39,7 @@ namespace PDF_Test
         {
             try
             {
-                string line = null;
+                string line;
                 TextReader readFile = new StreamReader("Text.txt");
                 int yPoint = 0;
 
