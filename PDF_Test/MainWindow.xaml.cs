@@ -33,7 +33,6 @@ namespace PDF_Test
         public MainWindow()
         {
             InitializeComponent();
-
         }
 
         TextReader readFile = new StreamReader("Text.txt");
@@ -91,6 +90,8 @@ namespace PDF_Test
                         yPoint = yPoint + 10;
                     }
                 }
+
+                Console.WriteLine(lines.ToString());
 
                 pdf.Save("Faktura.pdf");
                 readFile.Close();
