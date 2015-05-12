@@ -71,7 +71,7 @@ namespace PDF_Test
 
                 foreach (string test in File.ReadAllLines("Text.txt"))
                 {
-                    //Console.WriteLine(test);
+                    lines.Add(test);
                 }
 
                 while ((line = readFile.ReadLine()) != null)
