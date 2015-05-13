@@ -30,9 +30,12 @@ namespace PDF_Test
 
     public partial class MainWindow : Window
     {
+        ReaderController _RDR;
+
         public MainWindow()
         {
             InitializeComponent();
+            _RDR = new ReaderController();
         }
 
         TextReader readFile = new StreamReader("Text.txt");
@@ -55,7 +58,8 @@ namespace PDF_Test
         {
             try
             {
-                StreamReader readFile = new StreamReader("Text.txt");
+                string inputfile = "Text.txt";
+                StreamReader readFile = new StreamReader(inputfile);
                 int counter = 0;
                 string line;
                 int yPoint = 0;
@@ -67,10 +71,34 @@ namespace PDF_Test
                 XGraphics graph = XGraphics.FromPdfPage(pdfPage);
                 graph.DrawImage(background, new XPoint(0, 0));
                 XFont font = new XFont("Courier New", 11, XFontStyle.Regular);
+                //_RDR.ReadAllLines(inputfile);
+                int invoice_start_line;
+                int invoice_end_line;
+                int invoice_pages;
 
-                foreach (string test in File.ReadAllLines("Text.txt"))
+
+                _RDR.ReadLines(inputfile);
+
+                foreach (string test in _RDR.Lines)
                 {
-                    lines.Add(test);
+                    if (test.Contains("F A K T U R A"))
+                    {
+                        invoice_start_line = _RDR.Lines.IndexOf(test);
+                        _RDR.GetCompany(_RDR.Lines[invoice_start_line]);
+                    }
+                    if (test.Contains("Transport"))
+                    {
+                        invoice_end_line = _RDR.Lines.IndexOf(test);
+                    }
+                    if (test.Contains("/ 2"))
+                    {
+                        invoice_pages = 2;
+                    }
+                }
+
+                foreach (string test in File.ReadAllLines(inputfile))
+                {
+                    //lines.Add(test);
                 }
 
                 while ((line = readFile.ReadLine()) != null)
