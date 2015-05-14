@@ -35,31 +35,19 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MigraDoc.DocumentObjectModel-WPF">
-      <HintPath>..\..\..\..\PDFsharp-MigraDocFoundation-Assemblies-1_31\WPF\MigraDoc.DocumentObjectModel-WPF.dll</HintPath>
-    </Reference>
-    <Reference Include="MigraDoc.DocumentObjectModel-WPF.resources">
-      <HintPath>..\..\..\..\PDFsharp-MigraDocFoundation-Assemblies-1_31\WPF\de\MigraDoc.DocumentObjectModel-WPF.resources.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\WPF\MigraDoc.DocumentObjectModel-WPF.dll</HintPath>
     </Reference>
     <Reference Include="MigraDoc.Rendering-WPF">
-      <HintPath>..\..\..\..\PDFsharp-MigraDocFoundation-Assemblies-1_31\WPF\MigraDoc.Rendering-WPF.dll</HintPath>
-    </Reference>
-    <Reference Include="MigraDoc.Rendering-WPF.resources">
-      <HintPath>..\..\..\..\PDFsharp-MigraDocFoundation-Assemblies-1_31\WPF\de\MigraDoc.Rendering-WPF.resources.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\WPF\MigraDoc.Rendering-WPF.dll</HintPath>
     </Reference>
     <Reference Include="MigraDoc.RtfRendering-WPF">
-      <HintPath>..\..\..\..\PDFsharp-MigraDocFoundation-Assemblies-1_31\WPF\MigraDoc.RtfRendering-WPF.dll</HintPath>
-    </Reference>
-    <Reference Include="MigraDoc.RtfRendering-WPF.resources">
-      <HintPath>..\..\..\..\PDFsharp-MigraDocFoundation-Assemblies-1_31\WPF\de\MigraDoc.RtfRendering-WPF.resources.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\WPF\MigraDoc.RtfRendering-WPF.dll</HintPath>
     </Reference>
     <Reference Include="PdfSharp-WPF">
-      <HintPath>\\psf\Home\Documents\PDFsharp-MigraDocFoundation-Assemblies-1_31\WPF\PdfSharp-WPF.dll</HintPath>
-    </Reference>
-    <Reference Include="PdfSharp-WPF.resources">
-      <HintPath>\\psf\Home\Documents\PDFsharp-MigraDocFoundation-Assemblies-1_31\WPF\PdfSharp-WPF.resources.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\WPF\PdfSharp-WPF.dll</HintPath>
     </Reference>
     <Reference Include="PdfSharp.Charting-WPF">
-      <HintPath>\\psf\Home\Documents\PDFsharp-MigraDocFoundation-Assemblies-1_31\WPF\PdfSharp.Charting-WPF.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\WPF\PdfSharp.Charting-WPF.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
