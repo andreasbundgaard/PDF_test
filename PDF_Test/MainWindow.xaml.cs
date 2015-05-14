@@ -85,6 +85,11 @@ namespace PDF_Test
                     {
                         invoice_start_line = _RDR.Lines.IndexOf(test);
                         _RDR.GetCompany(_RDR.Lines[invoice_start_line]);
+                        _RDR.GetInvoiceNo(_RDR.Lines[invoice_start_line + 1]);
+                        _RDR.GetInvoiceDate(_RDR.Lines[invoice_start_line + 2]);
+                        _RDR.GetCVRNo(_RDR.Lines[invoice_start_line + 3]);
+                        _RDR.GetCustomerNo(_RDR.Lines[invoice_start_line + 4]);
+                        _RDR.GetOrderNo(_RDR.Lines[invoice_start_line + 6]);
                     }
                     if (test.Contains("Transport"))
                     {

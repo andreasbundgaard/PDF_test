@@ -34,6 +34,35 @@ namespace PDF_Test
             output = input.Substring(7, 20);
             return output.Trim();
         }
-
+        public int GetInvoiceNo(string input)
+        {
+            int output;
+            output = int.Parse(input.Substring(61, 7));
+            return output;
+        }
+        public DateTime GetInvoiceDate(string input)
+        {
+            DateTime output;
+            output = DateTime.Parse(input.Substring(62, 9));
+            return output;
+        }
+        public int GetCVRNo(string input)
+        {
+            int output;
+            output = int.Parse(input.Substring(62, 9));
+            return output;
+        }
+        public int GetCustomerNo(string input)
+        {
+            int output;
+            output = int.Parse(input.Substring(62, 9));
+            return output;
+        }
+        public int GetOrderNo(string input)
+        {
+            int output;
+            output = int.Parse(input.Substring(65, 6));
+            return output;
+        }
     }
 }
