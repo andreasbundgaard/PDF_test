@@ -21,7 +21,7 @@ namespace PDF_Test
         public Invoice(string Name, int No, DateTime Date, int CVR, int Customer, int Order, int Count, List<List<string>> PagesList)
         {
             this.CompanyName = Name;
-            this.CustomerNo = No;
+            this.InvoiceNo = No;
             this.InvoiceDate = Date;
             this.CVRNo = CVR;
             this.CustomerNo = Customer;

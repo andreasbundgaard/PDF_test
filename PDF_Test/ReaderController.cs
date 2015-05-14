@@ -10,6 +10,25 @@ namespace PDF_Test
     class ReaderController
     {
         public List<string> Lines = new List<string>();
+        private List<List<string>> TempList = new List<List<string>>();
+        public List<Invoice> InvoiceList = new List<Invoice>();
+
+        public int invoice_start_line;
+        public int invoice_break_line;
+        public int invoice_end_line;
+        public int invoice_pages;
+
+        public void GetPage(int start, int end)
+        {
+            List<string> returnlist = new List<string>();
+            returnlist = Lines.GetRange(start, (end - start + 1));
+            TempList.Add(returnlist);
+        }
+
+        public List<Invoice> GetInvoices()
+        {
+            return InvoiceList;
+        }
 
         public void ReadLines(string input)
         {
@@ -26,6 +45,13 @@ namespace PDF_Test
                 returnlist.Add(line);
             }
             return returnlist;
+        }
+
+        public void CreateInvoice(string Name, int No, DateTime Date, int CVR, int Customer, int Order, int Count)
+        {
+            Invoice i = new Invoice(Name, No, Date, CVR, Customer, Order, Count, TempList);
+            InvoiceList.Add(i);
+            Console.WriteLine(TempList);
         }
 
         public string GetCompany(string input)
