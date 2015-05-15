@@ -1,12 +1,12 @@
 ﻿<Window x:Class="PDF_Test.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="500" Width="600" WindowStartupLocation="CenterScreen">
+        Title="MainWindow" Height="500" Width="700" WindowStartupLocation="CenterScreen">
     <Grid>
         <Button Content="Create PDF" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="7,26,0,0" Click="Button_Click"/>
-        <ListView x:Name="Invoice_ListView" HorizontalAlignment="Left" Height="308" Margin="30,95,0,0" VerticalAlignment="Top" Width="535">
+        <ListView x:Name="Invoice_ListView" HorizontalAlignment="Left" Height="312" Margin="30,95,0,0" VerticalAlignment="Top" Width="630">
             <ListView.View>
-            <GridView>
+                <GridView>
                     <GridView.Columns>
                         <GridViewColumn>
                             <GridViewColumn.CellTemplate>
@@ -15,9 +15,9 @@
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        <GridViewColumn Header="Navn" Width="85" DisplayMemberBinding="{Binding CompanyName}" />
+                        <GridViewColumn Header="Navn" Width="120" DisplayMemberBinding="{Binding CompanyName}" />
                         <GridViewColumn Header="Fakturanr." Width="80" DisplayMemberBinding="{Binding InvoiceNo}" />
-                        <GridViewColumn Header="Dato" Width="100" DisplayMemberBinding="{Binding InvoiceDate}" />
+                        <GridViewColumn Header="Dato" Width="120" DisplayMemberBinding="{Binding InvoiceDate}" />
                         <GridViewColumn Header="CVR" Width="70" DisplayMemberBinding="{Binding CVRNo}" />
                         <GridViewColumn Header="Kundenr." Width="70" DisplayMemberBinding="{Binding CustomerNo}" />
                         <GridViewColumn Header="Ordrenr." Width="70" DisplayMemberBinding="{Binding OrderNo}" />

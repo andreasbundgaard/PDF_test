@@ -112,18 +112,26 @@ namespace PDF_Test
                             _RDR.GetOrderNo(_RDR.Lines[_RDR.invoice_start_line + 6]),
                             _RDR.invoice_pages);
                             _RDR.invoice_pages = 1;
+                            _RDR.invoice_start_line = 0;
+                            _RDR.invoice_end_line = 0;
                     }
                 }
 
-                Invoice_ListView.ItemsSource = _RDR.InvoiceList;
+                foreach (Invoice i in _RDR.InvoiceList)
+                {
+                    Invoice_ListView.Items.Add(i);
+                }
+
+                //Invoice_ListView.ItemsSource = _RDR.InvoiceList;
                 
                 
 
+                /*
                 foreach (string test in File.ReadAllLines(inputfile))
                 {
                     //lines.Add(test);
                 }
-
+                */
 
 
                 while ((line = readFile.ReadLine()) != null)
