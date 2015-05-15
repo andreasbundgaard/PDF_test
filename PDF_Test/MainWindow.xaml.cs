@@ -20,6 +20,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Diagnostics;
+using System.Windows.Forms;
 
 namespace PDF_Test
 {
@@ -37,6 +38,8 @@ namespace PDF_Test
             InitializeComponent();
             _RDR = new ReaderController();
         }
+
+        public bool CheckBoxes { get; set; }
 
         TextReader readFile = new StreamReader("Text.txt");
 
@@ -113,11 +116,15 @@ namespace PDF_Test
                 }
 
                 Invoice_ListView.ItemsSource = _RDR.InvoiceList;
+                
+                
 
                 foreach (string test in File.ReadAllLines(inputfile))
                 {
                     //lines.Add(test);
                 }
+
+
 
                 while ((line = readFile.ReadLine()) != null)
                 {
@@ -147,7 +154,7 @@ namespace PDF_Test
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                System.Windows.MessageBox.Show(ex.ToString());
             }
         }
     }

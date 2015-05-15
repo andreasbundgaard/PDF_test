@@ -52,7 +52,7 @@ namespace PDF_Test
         {
             Invoice i = new Invoice(Name, No, Date, CVR, Customer, Order, Count, TempList);
             InvoiceList.Add(i);
-            Console.WriteLine(TempList);
+            //Console.WriteLine(TempList);
         }
 
         public string GetCompany(string input)
