@@ -38,7 +38,7 @@ namespace PDF_Test
             _RDR = new ReaderController();
         }
 
-        TextReader readFile = new StreamReader("Text1.txt");
+        TextReader readFile = new StreamReader("Text.txt");
 
 
         private string ReadInvoice()
@@ -79,14 +79,17 @@ namespace PDF_Test
                 {
                     if (test.Contains("F A K T U R A"))
                     {
+                        
                         _RDR.invoice_start_line = _RDR.Lines.IndexOf(test);
+                        /*
                         _RDR.GetCompany(_RDR.Lines[_RDR.invoice_start_line]);
                         _RDR.GetInvoiceNo(_RDR.Lines[_RDR.invoice_start_line + 1]);
                         _RDR.GetInvoiceDate(_RDR.Lines[_RDR.invoice_start_line + 2]);
                         _RDR.GetCVRNo(_RDR.Lines[_RDR.invoice_start_line + 3]);
                         _RDR.GetCustomerNo(_RDR.Lines[_RDR.invoice_start_line + 4]);
                         _RDR.GetOrderNo(_RDR.Lines[_RDR.invoice_start_line + 6]);
-                        _RDR.invoice_pages = 1;
+                        */
+                        //_RDR.invoice_pages = 1;
                     }
                     else if (test.Contains("Transport"))
                     {
@@ -97,7 +100,7 @@ namespace PDF_Test
                     else if (test.Contains("SUBTOTAL"))
                     {
                         _RDR.invoice_end_line = _RDR.Lines.IndexOf(test);
-                        _RDR.GetPage(_RDR.invoice_start_line, _RDR.invoice_break_line);
+                        _RDR.GetPage(_RDR.invoice_start_line, _RDR.invoice_end_line);
                         _RDR.CreateInvoice(_RDR.GetCompany(_RDR.Lines[_RDR.invoice_start_line]),
                             _RDR.GetInvoiceNo(_RDR.Lines[_RDR.invoice_start_line + 1]),
                             _RDR.GetInvoiceDate(_RDR.Lines[_RDR.invoice_start_line + 2]),
@@ -105,10 +108,11 @@ namespace PDF_Test
                             _RDR.GetCustomerNo(_RDR.Lines[_RDR.invoice_start_line + 4]),
                             _RDR.GetOrderNo(_RDR.Lines[_RDR.invoice_start_line + 6]),
                             _RDR.invoice_pages);
-                            Invoice_ListView.ItemsSource = _RDR.InvoiceList;
+                            _RDR.invoice_pages = 1;
                     }
                 }
 
+                Invoice_ListView.ItemsSource = _RDR.InvoiceList;
 
                 foreach (string test in File.ReadAllLines(inputfile))
                 {
@@ -135,10 +139,10 @@ namespace PDF_Test
 
                 Console.WriteLine(lines.ToString());
 
-                pdf.Save("Faktura.pdf");
+                //pdf.Save("Faktura.pdf");
                 readFile.Close();
                 readFile = null;
-                Process.Start("Faktura.pdf");
+                //Process.Start("Faktura.pdf");
 
             }
             catch (Exception ex)

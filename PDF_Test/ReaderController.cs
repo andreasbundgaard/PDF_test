@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Globalization;
 
 namespace PDF_Test
 {
@@ -68,9 +69,8 @@ namespace PDF_Test
         }
         public DateTime GetInvoiceDate(string input)
         {
-            DateTime output;
-            output = DateTime.Parse(input.Substring(62, 9));
-            return output;
+            //string format = "d";
+            return DateTime.Parse(input.Substring(62, 9), CultureInfo.InstalledUICulture);
         }
         public int GetCVRNo(string input)
         {

@@ -7,7 +7,17 @@
         <ListView x:Name="Invoice_ListView" HorizontalAlignment="Left" Height="308" Margin="30,95,0,0" VerticalAlignment="Top" Width="535">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Navn" Width="100" DisplayMemberBinding="{Binding CustomerName}" />
+                    <GridViewColumn Header="Navn" Width="85" DisplayMemberBinding="{Binding CompanyName}" />
+                    <GridViewColumn Header="Fakturanr." Width="80" DisplayMemberBinding="{Binding InvoiceNo}" />
+                    <GridViewColumn Header="Dato" Width="100" DisplayMemberBinding="{Binding InvoiceDate}" />
+                    <GridViewColumn Header="CVR" Width="70" DisplayMemberBinding="{Binding CVRNo}" />
+                    <GridViewColumn Header="Kundenr." Width="70" DisplayMemberBinding="{Binding CustomerNo}" />
+                    <GridViewColumn Header="Ordrenr." Width="70" DisplayMemberBinding="{Binding OrderNo}" />
+                    <GridViewColumn Header="Sider" Width="50" DisplayMemberBinding="{Binding PageCount}" />
+
+
+
+
                 </GridView>
             </ListView.View>
         </ListView>
