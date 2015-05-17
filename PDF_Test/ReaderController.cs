@@ -24,7 +24,9 @@ namespace PDF_Test
         {
             List<string> returnlist = new List<string>();
             returnlist = Lines.GetRange(start, (end - start + 1));
-            //TempList.Add(returnlist);
+            TempList.Add(returnlist);
+            //invoice_start_line = 0;
+            //invoice_end_line = 0;
         }
 
         public List<Invoice> GetInvoices()
@@ -54,6 +56,7 @@ namespace PDF_Test
             Invoice i = new Invoice(ID, Name, No, Date, CVR, Customer, Order, Count, TempList);
             InvoiceList.Add(i);
             ID++;
+            TempList.Clear();
             //Console.WriteLine(TempList);
         }
 

@@ -117,14 +117,16 @@ namespace PDF_Test
                     }
                 }
 
+                Invoice_ListView.ItemsSource = _RDR.InvoiceList;
+                
+                /*
                 foreach (Invoice i in _RDR.InvoiceList)
                 {
                     Invoice_ListView.Items.Add(i);
                 }
 
-                //Invoice_ListView.ItemsSource = _RDR.InvoiceList;
                 
-                
+                */
 
                 /*
                 foreach (string test in File.ReadAllLines(inputfile))
