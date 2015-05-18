@@ -51,7 +51,7 @@ namespace PDF_Test
             return returnlist;
         }
 
-        public void CreateInvoice(string Name, int No, DateTime Date, int CVR, int Customer, int Order, int Count)
+        public void CreateInvoice(string Name, int No, string Date, int CVR, int Customer, int Order, int Count)
         {
             Invoice i = new Invoice(ID, Name, No, Date, CVR, Customer, Order, Count, TempList);
             InvoiceList.Add(i);
@@ -73,10 +73,11 @@ namespace PDF_Test
             return output;
         }
 
-        public DateTime GetInvoiceDate(string input)
+        public string GetInvoiceDate(string input)
         {
             //string format = "d";
-            return DateTime.Parse(input.Substring(62, 9), CultureInfo.InstalledUICulture);
+            var date = DateTime.Parse(input.Substring(62, 9), CultureInfo.InstalledUICulture);
+            return date.ToShortDateString();
         }
         public int GetCVRNo(string input)
         {

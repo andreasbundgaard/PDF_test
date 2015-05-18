@@ -17,7 +17,7 @@
                         </GridViewColumn>
                         <GridViewColumn Header="Navn" Width="120" DisplayMemberBinding="{Binding CompanyName}" />
                         <GridViewColumn Header="Fakturanr." Width="80" DisplayMemberBinding="{Binding InvoiceNo}" />
-                        <GridViewColumn Header="Dato" Width="120" DisplayMemberBinding="{Binding InvoiceDate}" />
+                        <GridViewColumn Header="Dato" Width="80" DisplayMemberBinding="{Binding InvoiceDate}" />
                         <GridViewColumn Header="CVR" Width="70" DisplayMemberBinding="{Binding CVRNo}" />
                         <GridViewColumn Header="Kundenr." Width="70" DisplayMemberBinding="{Binding CustomerNo}" />
                         <GridViewColumn Header="Ordrenr." Width="70" DisplayMemberBinding="{Binding OrderNo}" />
