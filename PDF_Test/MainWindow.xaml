@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="100" Width="100" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Button Content="Create PDF" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="7,26,0,0" Click="Button_Click"/>
+        <Button Name="create" Content="Create PDF" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="7,26,0,0" Click="Button_Click"/>
 
     </Grid>
 </Window>

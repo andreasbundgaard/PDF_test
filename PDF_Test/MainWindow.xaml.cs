@@ -33,11 +33,9 @@ namespace PDF_Test
         public MainWindow()
         {
             InitializeComponent();
-
         }
 
         TextReader readFile = new StreamReader("Text.txt");
-
 
         private string ReadInvoice()
         {
@@ -46,13 +44,13 @@ namespace PDF_Test
             return returnstring;
         }
 
-        private List<string> ReadAllLines()
+        public List<string> ReadAllLines()
         {
             List<string> returnlist = new List<string>();
             return returnlist;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        public void Button_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -62,8 +60,8 @@ namespace PDF_Test
                 int yPoint = 0;
                 List<string> lines = new List<string>();
                 PdfDocument pdf = new PdfDocument();
-                pdf.Info.Title = "TXT to PDF";
                 PdfPage pdfPage = pdf.AddPage();
+                pdf.Info.Title = "TXT to PDF";
                 XImage background = XImage.FromFile("C:\\Fakturapapir.jpg");
                 XGraphics graph = XGraphics.FromPdfPage(pdfPage);
                 graph.DrawImage(background, new XPoint(0, 0));
