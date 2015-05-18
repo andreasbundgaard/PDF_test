@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
+//using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -32,30 +32,17 @@ namespace PDF_Test
     public partial class MainWindow : Window
     {
         ReaderController _RDR;
+        PdfController _PDF;
 
         public MainWindow()
         {
             InitializeComponent();
             _RDR = new ReaderController();
+            _PDF = new PdfController();
         }
-
-        public bool CheckBoxes { get; set; }
 
         TextReader readFile = new StreamReader("Text.txt");
-
-
-        private string ReadInvoice()
-        {
-            string returnstring = "";
-            returnstring = readFile.ReadToEnd();
-            return returnstring;
-        }
-
-        private List<string> ReadAllLines()
-        {
-            List<string> returnlist = new List<string>();
-            return returnlist;
-        }
+        public List<int> selectedIndexes = new List<int>();
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -134,7 +121,7 @@ namespace PDF_Test
                     //lines.Add(test);
                 }
                 */
-
+                
 
                 while ((line = readFile.ReadLine()) != null)
                 {
@@ -154,8 +141,6 @@ namespace PDF_Test
                     }
                 }
 
-                Console.WriteLine(lines.ToString());
-
                 //pdf.Save("Faktura.pdf");
                 readFile.Close();
                 readFile = null;
@@ -165,6 +150,21 @@ namespace PDF_Test
             catch (Exception ex)
             {
                 System.Windows.MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void Test_Button_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (System.Windows.Forms.ListViewItem item in Invoice_ListView) {
+                if (item.Checked == true)
+                {
+                    selectedIndexes.Add(item.Index);
+                }
+            }
+            foreach (int index in selectedIndexes)
+            {
+                _PDF.CreateInvoice(index, _RDR.InvoiceList[index].Pages);
+
             }
         }
     }

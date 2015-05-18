@@ -29,11 +29,6 @@ namespace PDF_Test
             //invoice_end_line = 0;
         }
 
-        public List<Invoice> GetInvoices()
-        {
-            return InvoiceList;
-        }
-
         public void ReadLines(string input)
         {
             foreach (string line in File.ReadAllLines(input))
@@ -41,22 +36,13 @@ namespace PDF_Test
                 Lines.Add(line);
             }
         }
-        public List<string> ReadAllLines(string input)
-        {
-            List<string> returnlist = new List<string>();
-            foreach (string line in File.ReadAllLines(input))
-            {
-                returnlist.Add(line);
-            }
-            return returnlist;
-        }
 
         public void CreateInvoice(string Name, int No, string Date, int CVR, int Customer, int Order, int Count)
         {
             Invoice i = new Invoice(ID, Name, No, Date, CVR, Customer, Order, Count, TempList);
             InvoiceList.Add(i);
             ID++;
-            TempList.Clear();
+            //TempList.Clear();
             //Console.WriteLine(TempList);
         }
 
