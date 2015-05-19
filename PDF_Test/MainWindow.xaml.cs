@@ -41,6 +41,7 @@ namespace PDF_Test
             _PDF = new PdfController();
         }
 
+        string inputfile = "Text.txt";
         TextReader readFile = new StreamReader("Text.txt");
         public List<int> selectedIndexes = new List<int>();
 
@@ -48,95 +49,8 @@ namespace PDF_Test
         {
             try
             {
-                string inputfile = "Text.txt";
-                StreamReader readFile = new StreamReader(inputfile);
-                int counter = 0;
-                string line;
-                int yPoint = 0;
-                List<string> lines = new List<string>();
-                PdfDocument pdf = new PdfDocument();
-                pdf.Info.Title = "TXT to PDF";
-                PdfPage pdfPage = pdf.AddPage();
-                XImage background = XImage.FromFile("C:\\Fakturapapir.jpg");
-                XGraphics graph = XGraphics.FromPdfPage(pdfPage);
-                graph.DrawImage(background, new XPoint(0, 0));
-                XFont font = new XFont("Courier New", 11, XFontStyle.Regular);
-                //_RDR.ReadAllLines(inputfile);
-
-                _RDR.ReadLines(inputfile);
-
-                foreach (string test in _RDR.Lines)
-                {
-                    if (test.Contains("FAKTURANR."))
-                    {
-                        
-                        _RDR.invoice_start_line = (_RDR.Lines.IndexOf(test) - 1);
-                    }
-                    else if (test.Contains("Transport"))
-                    {
-                        _RDR.invoice_break_line = _RDR.Lines.IndexOf(test) - 1;
-                        _RDR.invoice_pages = 2;
-                        _RDR.GetPage(_RDR.invoice_start_line, _RDR.invoice_break_line);
-                    }
-                    else if (test.Contains("SUBTOTAL"))
-                    {
-                        _RDR.invoice_end_line = _RDR.Lines.IndexOf(test) - 1;
-                        _RDR.GetPage(_RDR.invoice_start_line, _RDR.invoice_end_line);
-                        _RDR.CreateInvoice(_RDR.GetCompany(_RDR.Lines[_RDR.invoice_start_line]),
-                            _RDR.GetInvoiceNo(_RDR.Lines[_RDR.invoice_start_line + 1]),
-                            _RDR.GetInvoiceDate(_RDR.Lines[_RDR.invoice_start_line + 2]),
-                            _RDR.GetCVRNo(_RDR.Lines[_RDR.invoice_start_line + 3]),
-                            _RDR.GetCustomerNo(_RDR.Lines[_RDR.invoice_start_line + 4]),
-                            _RDR.GetOrderNo(_RDR.Lines[_RDR.invoice_start_line + 6]),
-                            _RDR.invoice_pages);
-                            _RDR.invoice_pages = 1;
-                            _RDR.invoice_start_line = 0;
-                            _RDR.invoice_end_line = 0;
-                    }
-                }
-
+                _RDR.Parse(inputfile);
                 Invoice_ListView.ItemsSource = _RDR.InvoiceList;
-                
-                /*
-                foreach (Invoice i in _RDR.InvoiceList)
-                {
-                    Invoice_ListView.Items.Add(i);
-                }
-
-                
-                */
-
-                /*
-                foreach (string test in File.ReadAllLines(inputfile))
-                {
-                    //lines.Add(test);
-                }
-                */
-                
-
-                while ((line = readFile.ReadLine()) != null)
-                {
-                    //foreach 
-                    //line = readFile.ReadToEnd();
-                    lines.Add(line);
-
-                    if (line.Contains(""))
-                    {
-                        //Console.WriteLine("Succes");
-                        counter++;
-                    }
-                    else
-                    {
-                        graph.DrawString(line, font, XBrushes.Black, new XRect(40, yPoint, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
-                        yPoint = yPoint + 10;
-                    }
-                }
-
-                //pdf.Save("Faktura.pdf");
-                readFile.Close();
-                readFile = null;
-                //Process.Start("Faktura.pdf");
-
             }
             catch (Exception ex)
             {
@@ -162,16 +76,6 @@ namespace PDF_Test
 
             }
              * */
-        }
-
-        private void CheckBox_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void CheckBox_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

@@ -15,12 +15,46 @@ namespace PDF_Test
         private List<List<string>> TempList = new List<List<string>>();
         private List<List<string>> TempList2 = new List<List<string>>();
 
-
         public int invoice_start_line;
         public int invoice_break_line;
         public int invoice_end_line;
         public int invoice_pages;
-        public int ID = 0;
+
+        public void Parse(string input)
+        {
+            foreach (string line in File.ReadAllLines(input))
+            {
+                Lines.Add(line);
+            }
+            foreach (string test in Lines)
+            {
+                if (test.Contains("FAKTURANR."))
+                {
+                    invoice_start_line = (Lines.IndexOf(test) - 1);
+                }
+                else if (test.Contains("Transport"))
+                {
+                    invoice_break_line = Lines.IndexOf(test) - 1;
+                    invoice_pages = 2;
+                    GetPage(invoice_start_line, invoice_break_line);
+                }
+                else if (test.Contains("SUBTOTAL"))
+                {
+                    invoice_end_line = Lines.IndexOf(test) - 1;
+                    GetPage(invoice_start_line, invoice_end_line);
+                    CreateInvoice(GetCompany(Lines[invoice_start_line]),
+                    GetInvoiceNo(Lines[invoice_start_line + 1]),
+                    GetInvoiceDate(Lines[invoice_start_line + 2]),
+                    GetCVRNo(Lines[invoice_start_line + 3]),
+                        GetCustomerNo(Lines[invoice_start_line + 4]),
+                        GetOrderNo(Lines[invoice_start_line + 6]),
+                        invoice_pages);
+                    invoice_pages = 1;
+                    invoice_start_line = 0;
+                    invoice_end_line = 0;
+                }
+            }
+        }
 
         public void GetPage(int start, int end)
         {
@@ -29,18 +63,10 @@ namespace PDF_Test
             TempList.Add(returnlist);
         }
 
-        public void ReadLines(string input)
-        {
-            foreach (string line in File.ReadAllLines(input))
-            {
-                Lines.Add(line);
-            }
-        }
-
         public void CreateInvoice(string Name, int No, string Date, int CVR, int Customer, int Order, int Count)
         {
             TempList2 = TempList.ToList();
-            Invoice i = new Invoice(ID, Name, No, Date, CVR, Customer, Order, Count, TempList2);
+            Invoice i = new Invoice(Name, No, Date, CVR, Customer, Order, Count, TempList2);
             InvoiceList.Add(i);
             TempList.Clear();
             //Console.WriteLine(TempList);

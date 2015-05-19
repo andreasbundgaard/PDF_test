@@ -8,7 +8,6 @@ namespace PDF_Test
 {
     class Invoice
     {
-        public int ID { get; set; }
         public string CompanyName { get; set; }
         public int InvoiceNo { get; set; }
         public string InvoiceDate { get; set; }
@@ -19,17 +18,16 @@ namespace PDF_Test
 
         public List<List<string>> Pages = new List<List<string>>();
 
-        public Invoice(int ID, string Name, int No, string Date, int CVR, int Customer, int Order, int Count, List<List<string>> PagesList)
+        public Invoice(string CompanyName, int InvoiceNo, string InvoiceDate, int CVRNo, int CustomerNo, int OrderNo, int PageCount, List<List<string>> Pages)
         {
-            this.ID = ID;
-            this.CompanyName = Name;
-            this.InvoiceNo = No;
-            this.InvoiceDate = Date;
-            this.CVRNo = CVR;
-            this.CustomerNo = Customer;
-            this.OrderNo = Order;
-            this.PageCount = Count;
-            this.Pages = PagesList;
+            this.CompanyName = CompanyName;
+            this.InvoiceNo = InvoiceNo;
+            this.InvoiceDate = InvoiceDate;
+            this.CVRNo = CVRNo;
+            this.CustomerNo = CustomerNo;
+            this.OrderNo = OrderNo;
+            this.PageCount = PageCount;
+            this.Pages = Pages;
         }
     }
 }
