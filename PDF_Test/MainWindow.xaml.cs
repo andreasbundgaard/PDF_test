@@ -60,22 +60,7 @@ namespace PDF_Test
 
         private void Test_Button_Click(object sender, RoutedEventArgs e)
         {
-            
             _PDF.CreateInvoice(Invoice_ListView.SelectedIndex, _RDR.InvoiceList);
-            /*
-            foreach (System.Windows.Forms.ListViewItem item in Invoice_ListView) {
-                if (item.Checked == true)
-                {
-                    selectedIndexes.Add(item.Index);
-                }
-            }
-            
-            foreach (int index in selectedIndexes)
-            {
-                _PDF.CreateInvoice(index, _RDR.InvoiceList[index].Pages);
-
-            }
-             * */
         }
     }
 }
