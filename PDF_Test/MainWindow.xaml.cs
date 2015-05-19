@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-//using System.Windows.Controls;
+using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -67,29 +67,20 @@ namespace PDF_Test
 
                 foreach (string test in _RDR.Lines)
                 {
-                    if (test.Contains("F A K T U R A"))
+                    if (test.Contains("FAKTURANR."))
                     {
                         
-                        _RDR.invoice_start_line = _RDR.Lines.IndexOf(test);
-                        /*
-                        _RDR.GetCompany(_RDR.Lines[_RDR.invoice_start_line]);
-                        _RDR.GetInvoiceNo(_RDR.Lines[_RDR.invoice_start_line + 1]);
-                        _RDR.GetInvoiceDate(_RDR.Lines[_RDR.invoice_start_line + 2]);
-                        _RDR.GetCVRNo(_RDR.Lines[_RDR.invoice_start_line + 3]);
-                        _RDR.GetCustomerNo(_RDR.Lines[_RDR.invoice_start_line + 4]);
-                        _RDR.GetOrderNo(_RDR.Lines[_RDR.invoice_start_line + 6]);
-                        */
-                        //_RDR.invoice_pages = 1;
+                        _RDR.invoice_start_line = (_RDR.Lines.IndexOf(test) - 1);
                     }
                     else if (test.Contains("Transport"))
                     {
-                        _RDR.invoice_break_line = _RDR.Lines.IndexOf(test);
+                        _RDR.invoice_break_line = _RDR.Lines.IndexOf(test) - 1;
                         _RDR.invoice_pages = 2;
                         _RDR.GetPage(_RDR.invoice_start_line, _RDR.invoice_break_line);
                     }
                     else if (test.Contains("SUBTOTAL"))
                     {
-                        _RDR.invoice_end_line = _RDR.Lines.IndexOf(test);
+                        _RDR.invoice_end_line = _RDR.Lines.IndexOf(test) - 1;
                         _RDR.GetPage(_RDR.invoice_start_line, _RDR.invoice_end_line);
                         _RDR.CreateInvoice(_RDR.GetCompany(_RDR.Lines[_RDR.invoice_start_line]),
                             _RDR.GetInvoiceNo(_RDR.Lines[_RDR.invoice_start_line + 1]),
@@ -155,17 +146,32 @@ namespace PDF_Test
 
         private void Test_Button_Click(object sender, RoutedEventArgs e)
         {
+            
+            _PDF.CreateInvoice(Invoice_ListView.SelectedIndex, _RDR.InvoiceList);
+            /*
             foreach (System.Windows.Forms.ListViewItem item in Invoice_ListView) {
                 if (item.Checked == true)
                 {
                     selectedIndexes.Add(item.Index);
                 }
             }
+            
             foreach (int index in selectedIndexes)
             {
                 _PDF.CreateInvoice(index, _RDR.InvoiceList[index].Pages);
 
             }
+             * */
+        }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void CheckBox_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

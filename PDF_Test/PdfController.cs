@@ -12,15 +12,13 @@ namespace PDF_Test
 {
     class PdfController
     {
-        //ReaderController _RDR;
-
-        public void CreateInvoice(int selectedIndex, List<List<string>> invoicelist)
+        public void CreateInvoice(int index, List<Invoice> invoices)
         {
-                
+
             PdfDocument pdf = new PdfDocument();
-                foreach (List<string> LineList in invoicelist)
+                foreach (List<string> LineList in invoices[index].Pages)
                 {
-                    int yPoint = 0;
+                    int yPoint = 160;
                     PdfPage pdfPage = pdf.AddPage();
                     XImage background = XImage.FromFile("C:\\Fakturapapir.jpg");
                     XGraphics graph = XGraphics.FromPdfPage(pdfPage);

@@ -11,8 +11,10 @@ namespace PDF_Test
     class ReaderController
     {
         public List<string> Lines = new List<string>();
-        public List<List<string>> TempList = new List<List<string>>();
         public List<Invoice> InvoiceList = new List<Invoice>();
+        private List<List<string>> TempList = new List<List<string>>();
+        private List<List<string>> TempList2 = new List<List<string>>();
+
 
         public int invoice_start_line;
         public int invoice_break_line;
@@ -23,10 +25,8 @@ namespace PDF_Test
         public void GetPage(int start, int end)
         {
             List<string> returnlist = new List<string>();
-            returnlist = Lines.GetRange(start, (end - start + 1));
+            returnlist = Lines.GetRange(start, (end - start + 2));
             TempList.Add(returnlist);
-            //invoice_start_line = 0;
-            //invoice_end_line = 0;
         }
 
         public void ReadLines(string input)
@@ -39,10 +39,10 @@ namespace PDF_Test
 
         public void CreateInvoice(string Name, int No, string Date, int CVR, int Customer, int Order, int Count)
         {
-            Invoice i = new Invoice(ID, Name, No, Date, CVR, Customer, Order, Count, TempList);
+            TempList2 = TempList.ToList();
+            Invoice i = new Invoice(ID, Name, No, Date, CVR, Customer, Order, Count, TempList2);
             InvoiceList.Add(i);
-            ID++;
-            //TempList.Clear();
+            TempList.Clear();
             //Console.WriteLine(TempList);
         }
 

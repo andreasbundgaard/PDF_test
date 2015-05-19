@@ -11,7 +11,7 @@
                         <GridViewColumn>
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <CheckBox Tag="{Binding OrderNo}"/>
+                                    <CheckBox x:Name="CheckBox" Tag="{Binding IsChecked}" Checked="CheckBox_Checked" Click="CheckBox_Click"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
