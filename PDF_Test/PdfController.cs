@@ -12,7 +12,6 @@ namespace PDF_Test
 {
     class PdfController
     {
-        //ReaderController _RDR;
         string invoiceName;
         string saveLocation;
 

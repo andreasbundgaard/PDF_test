@@ -19,6 +19,20 @@ namespace PDF_Test
         public int invoice_break_line;
         public int invoice_end_line;
         public int invoice_pages;
+        public bool inputLoaded = false;
+        public string textFile;
+
+        public string FileInput(string argument)
+        {
+            if (argument.Contains(".txt"))
+            {
+                return argument;
+            }
+            else
+            {
+                return "";
+            }
+        }
 
         public void Parse(string input)
         {
@@ -69,7 +83,6 @@ namespace PDF_Test
             Invoice i = new Invoice(Name, No, Date, CVR, Customer, Order, Count, TempList2);
             InvoiceList.Add(i);
             TempList.Clear();
-            //Console.WriteLine(TempList);
         }
 
         public string GetCompany(string input)
@@ -87,7 +100,6 @@ namespace PDF_Test
 
         public string GetInvoiceDate(string input)
         {
-            //string format = "d";
             var date = DateTime.Parse(input.Substring(62, 9), CultureInfo.InstalledUICulture);
             return date.ToShortDateString();
         }

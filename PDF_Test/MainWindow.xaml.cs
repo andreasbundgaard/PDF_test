@@ -12,9 +12,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using PdfSharp;
-using PdfSharp.Drawing;
-using PdfSharp.Pdf;
 using System.IO;
 using System.ComponentModel;
 using System.Data;
@@ -34,11 +31,14 @@ namespace PDF_Test
         ReaderController _RDR;
         PdfController _PDF;
 
+        bool TextFileLoaded = false;
+
         public MainWindow()
         {
             InitializeComponent();
             _RDR = new ReaderController();
             _PDF = new PdfController();
+
         }
 
         string inputfile = "Text.txt";
