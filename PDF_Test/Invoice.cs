@@ -8,6 +8,7 @@ namespace PDF_Test
 {
     class Invoice
     {
+        public string FilePath { get; set; }
         public string CompanyName { get; set; }
         public int InvoiceNo { get; set; }
         public string InvoiceDate { get; set; }

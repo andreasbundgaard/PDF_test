@@ -31,30 +31,45 @@ namespace PDF_Test
         ReaderController _RDR;
         PdfController _PDF;
 
-        bool TextFileLoaded = false;
-
         public MainWindow()
         {
             InitializeComponent();
             _RDR = new ReaderController();
             _PDF = new PdfController();
 
+            if (App.InputLoaded == true)
+            {
+                _RDR.Parse(App.InputPath);
+                Invoice_ListView.ItemsSource = _RDR.InvoiceList;
+            }
+            else
+            {
+                Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+                dlg.DefaultExt = ".txt";
+                Nullable<bool> result = dlg.ShowDialog();
+                if (result == true)
+                {
+                    _RDR.Parse(dlg.FileName);
+                    Invoice_ListView.ItemsSource = _RDR.InvoiceList;
+                }
+            }
+
         }
 
-        string inputfile = "Text.txt";
-        TextReader readFile = new StreamReader("Text.txt");
+        //string inputfile = "Text.txt";
+        //TextReader readFile = new StreamReader("Text.txt");
         public List<int> selectedIndexes = new List<int>();
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            try
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+            dlg.DefaultExt = ".txt";
+            Nullable<bool> result = dlg.ShowDialog();
+            if (result == true)
             {
-                _RDR.Parse(inputfile);
+                _RDR.InvoiceList.Clear();
+                _RDR.Parse(dlg.FileName);
                 Invoice_ListView.ItemsSource = _RDR.InvoiceList;
-            }
-            catch (Exception ex)
-            {
-                System.Windows.MessageBox.Show(ex.ToString());
             }
         }
 

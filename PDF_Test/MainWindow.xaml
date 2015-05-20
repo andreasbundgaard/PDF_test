@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="500" Width="700" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Button Content="Create PDF" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="7,26,0,0" Click="Button_Click"/>
+        <Button x:Name="ChooseTextFile_Button" Content="Gennemse..." HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="30,44,0,0" Click="Button_Click"/>
         <ListView x:Name="Invoice_ListView" HorizontalAlignment="Left" Height="312" Margin="30,95,0,0" VerticalAlignment="Top" Width="630">
             <ListView.View>
                 <GridView>

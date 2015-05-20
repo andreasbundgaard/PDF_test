@@ -22,15 +22,16 @@ namespace PDF_Test
         public bool inputLoaded = false;
         public string textFile;
 
-        public string FileInput(string argument)
+        public void FileInput(string argument)
         {
             if (argument.Contains(".txt"))
             {
-                return argument;
+                textFile = argument;
+                //return true;
             }
             else
             {
-                return "";
+                //return false;
             }
         }
 
