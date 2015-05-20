@@ -67,7 +67,9 @@ namespace PDF_Test
             Nullable<bool> result = dlg.ShowDialog();
             if (result == true)
             {
+                Invoice_ListView.ItemsSource = null;
                 _RDR.InvoiceList.Clear();
+                _RDR.Lines.Clear();
                 _RDR.Parse(dlg.FileName);
                 Invoice_ListView.ItemsSource = _RDR.InvoiceList;
             }

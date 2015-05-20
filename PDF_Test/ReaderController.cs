@@ -20,20 +20,7 @@ namespace PDF_Test
         public int invoice_end_line;
         public int invoice_pages;
         public bool inputLoaded = false;
-        public string textFile;
-
-        public void FileInput(string argument)
-        {
-            if (argument.Contains(".txt"))
-            {
-                textFile = argument;
-                //return true;
-            }
-            else
-            {
-                //return false;
-            }
-        }
+        //public string textFile;
 
         public void Parse(string input)
         {
