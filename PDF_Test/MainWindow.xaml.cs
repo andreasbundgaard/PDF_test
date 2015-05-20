@@ -71,7 +71,14 @@ namespace PDF_Test
                 _RDR.InvoiceList.Clear();
                 _RDR.Lines.Clear();
                 _RDR.Parse(dlg.FileName);
-                Invoice_ListView.ItemsSource = _RDR.InvoiceList;
+                if (_RDR.InvoiceList.Count == 0)
+                {
+                    System.Windows.MessageBox.Show("Der blev ikke fundet nogen fakturaer i den valgte tekstfil");
+                }
+                else
+                {
+                    Invoice_ListView.ItemsSource = _RDR.InvoiceList;
+                }
             }
         }
 
